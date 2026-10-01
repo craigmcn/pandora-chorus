@@ -1,4 +1,4 @@
-const SHELL_CACHE = "spike-shell-v1";
+const SHELL_CACHE = "spike-shell-v2";
 const AUDIO_CACHE = "spike-audio-v2";
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest", "icon-192.png"];
 
@@ -31,8 +31,9 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Network-first so redeploys of the spike show up; cache only for offline use.
+  // "no-cache" revalidates past GitHub Pages' 10-minute max-age.
   event.respondWith(
-    fetch(event.request)
+    fetch(event.request, { cache: "no-cache" })
       .then((res) => {
         const copy = res.clone();
         caches.open(SHELL_CACHE).then((c) => c.put(event.request, copy));

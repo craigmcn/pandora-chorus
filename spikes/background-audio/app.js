@@ -6,6 +6,8 @@ const TRACKS = [1, 2, 3, 4, 5].map((n) => ({
   path: `audio/song${n}-alto.mp3`,
 }));
 const AUDIO_CACHE = "spike-audio-v2";
+// Replaced with the commit and deploy time by the Pages workflow.
+const BUILD = "dev";
 const LOG_KEY = "spike-log";
 const SETTINGS_KEY = "spike-settings";
 // A transition with no "playing" event after this long counts as failed.
@@ -360,6 +362,7 @@ $("next").addEventListener("click", () => skip(1));
 function reportText() {
   return [
     `Report ${new Date().toISOString()}`,
+    `Version ${BUILD}`,
     $("env").textContent,
     `Settings: ${JSON.stringify(settings)}`,
     $("summary").textContent,
@@ -397,6 +400,7 @@ document.addEventListener("freeze", () => record("freeze"));
 document.addEventListener("resume", () => record("resume"));
 
 async function init() {
+  $("version").textContent = `Version ${BUILD}`;
   for (const e of log) renderEntry(e);
   renderSummary();
   bindSettings();
@@ -414,7 +418,7 @@ async function init() {
   renderEnv();
   await updateCacheStatus();
   if (settings.source === "blob") await prepareBlobUrls();
-  record("loaded", standalone ? "standalone" : "browser");
+  record("loaded", `${standalone ? "standalone" : "browser"} ${BUILD}`);
 }
 
 init();
