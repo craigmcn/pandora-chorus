@@ -9,7 +9,7 @@ Open questions and gaps in the brief, ranked by impact:
 * **Tier 2** changes the data model.
 * **Tier 3** is player and UX detail.
 
-Each answered question is marked **✅** with its answer. The brief's Decisions section is the summary to build from. **Only success criteria is still open.**
+Each answered question is marked **✅** with its answer. The brief's Decisions section is the summary to build from. All questions are answered.
 
 ## Background audio risk
 
@@ -116,4 +116,7 @@ Background audio is a hard requirement: audio keeps playing, and the section loo
 * ✅ **MVP scope:** all four areas: the practice player and songs, members and login, the schedule, and news, FAQ and pages.
 * ✅ **Out of scope:** dues and payments, attendance and RSVPs, chat and messaging, and native store apps (unless the background-audio test fails).
 * ✅ **Roles in the system:** covered by Q14.
-* ⬜ **Success criteria:** still open. What would show the director that this saves time?
+* ✅ **Success criteria:** what would show the director that this saves time?
+  * The director no longer sends the start-of-session boilerplate emails.
+  * The director can edit individual content sections instead of the whole page (the current site appears to be a single web page).
+  * Access by member and session is automatic, not managed by removing content or changing a shared password.

@@ -12,7 +12,10 @@ Decided 2026-10-01. Question numbers refer to the [Brief Review](Brief%20Review.
 * **Timeline:** no fixed date.
 * **Migration:** start fresh. The director uploads the current session's songs; nothing is imported from the old site.
 * **Out of scope:** dues and payments (registration stays elsewhere), attendance and RSVPs, chat and messaging, and native store apps (unless the background-audio test fails).
-* **Still open:** success criteria, i.e. what would show the director that this saves time.
+* **Success criteria:** what would show the director that this saves time.
+  * The director no longer sends the start-of-session boilerplate emails.
+  * The director can edit individual content sections instead of the whole page (the current site appears to be a single web page).
+  * Access by member and session is automatic, not managed by removing content or changing a shared password.
 
 ### Platform and infrastructure
 
