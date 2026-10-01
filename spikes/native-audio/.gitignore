@@ -1,0 +1,4 @@
+node_modules/
+.yarn/
+www/audio/
+www/version.js
