@@ -197,6 +197,22 @@ for (const [slot, el] of elements.entries()) {
     renderNowPlaying();
   });
   el.addEventListener("ended", () => onEnded(el));
+  // iOS can aim lock-screen play at the idle, preloaded element in dual
+  // mode; stop it so two songs never play at once.
+  el.addEventListener("play", () => {
+    if (settings.strategy === "dual" && el !== activeEl()) {
+      el.pause();
+      record("stray-play", `slot ${slot} paused`, undefined, trackOf.get(el));
+    }
+  });
+  // Tell iOS the real state so lock-screen play/pause follows the active element.
+  for (const ev of ["playing", "pause"]) {
+    el.addEventListener(ev, () => {
+      if ("mediaSession" in navigator && el === activeEl()) {
+        navigator.mediaSession.playbackState = el.paused ? "paused" : "playing";
+      }
+    });
+  }
   el.addEventListener("error", () => {
     if (!trackOf.has(el)) return;
     const err = el.error;
