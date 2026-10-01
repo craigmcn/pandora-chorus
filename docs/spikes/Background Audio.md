@@ -68,6 +68,7 @@ Devices: iPhone and iPad (Safari tab *and* installed), Android phone (Chrome tab
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default, version `5cab2bf` | 3/3 ok | Pause ok | Gaps between songs: 168 ms, 1080 ms, 1093 ms |
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default, version `5cab2bf` | 2/3 ok | — | Lock-screen player on screen during some changes. 3→4 logged `stalled` 4 s after `play()` and only reached `playing` after 12.5 s, still locked: loading from the service worker stalled, not a refused `play()`. Other gaps ~1.1 s |
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Dual elements, SW cache, version `5cab2bf` | 2/2 ok | Confused | Gaps ~125 ms with no `waiting`: the preloaded element starts instantly. But a lock-screen play at 21:28:45 was logged while song 1 was already playing, and on unlock the *idle* preloaded element (song 2) started by itself alongside song 1. Lock-screen controls seem bound to the wrong element |
+| 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Single, **blob** source, version `5cab2bf` | 1/2 ok | — | 2→3 `stalled` even though the track was already in memory, and only reached `playing` on unlock (24 s). So the stall isn't the service worker: iOS sometimes won't finish loading a *new* `src` while locked |
 | 2026-10-01 |  |  |  |  |  |  |
 
 ## Notes
