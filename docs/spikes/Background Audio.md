@@ -67,6 +67,7 @@ Devices: iPhone and iPad (Safari tab *and* installed), Android phone (Chrome tab
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default (single, SW cache, Media Session + audioSession on, 1×), version `5cab2bf` | Earlier runs: mostly ok | — | Earlier, informal runs (no report): with the lock-screen player **on screen** during a track change, the next track "played" with no sound and the loop stalled until the app was reopened |
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default, version `5cab2bf` | 3/3 ok | Pause ok | Gaps between songs: 168 ms, 1080 ms, 1093 ms |
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default, version `5cab2bf` | 2/3 ok | — | Lock-screen player on screen during some changes. 3→4 logged `stalled` 4 s after `play()` and only reached `playing` after 12.5 s, still locked: loading from the service worker stalled, not a refused `play()`. Other gaps ~1.1 s |
+| 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Dual elements, SW cache, version `5cab2bf` | 2/2 ok | Confused | Gaps ~125 ms with no `waiting`: the preloaded element starts instantly. But a lock-screen play at 21:28:45 was logged while song 1 was already playing, and on unlock the *idle* preloaded element (song 2) started by itself alongside song 1. Lock-screen controls seem bound to the wrong element |
 | 2026-10-01 |  |  |  |  |  |  |
 
 ## Notes
