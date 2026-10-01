@@ -4,15 +4,64 @@
 
 ## Decisions
 
-Open questions and gaps are tracked in [Brief Review](Brief%20Review.md).
+Decided 2026-10-01. Question numbers refer to the [Brief Review](Brief%20Review.md), which lists each question with its answer.
 
-* 2026-10-01
-  * **Platform:** installable web app (PWA) first, with store apps later only if needed.
-  * **Background audio is a requirement:** playback, including moving to the next track in a loop, must continue when a phone or tablet sleeps or locks on its normal settings.
-    * Test this early on a real iPhone, iPad and Android device. If the PWA can't do it reliably, wrap the app with Capacitor and a native audio plugin.
-  * **Backend:** Supabase (database, auth, file storage).
-  * **Login:** email magic link; primary and secondary addresses both work.
-  * **Downloads:** members may download sheet music and practice tracks, so they can practise offline.
+### MVP
+
+* **Scope:** all four areas are in the MVP: the practice player and songs, members and login, the schedule, and news, FAQ and pages.
+* **Timeline:** no fixed date.
+* **Migration:** start fresh. The director uploads the current session's songs; nothing is imported from the old site.
+* **Out of scope:** dues and payments (registration stays elsewhere), attendance and RSVPs, chat and messaging, and native store apps (unless the background-audio test fails).
+* **Still open:** success criteria, i.e. what would show the director that this saves time.
+
+### Platform and infrastructure
+
+* **Platform (Q1):** installable web app (PWA) first, with store apps later only if needed.
+* **Background audio is a requirement:** playback, including moving to the next track in a loop, must continue when a phone or tablet sleeps or locks on its normal settings.
+  * Test this early on a real iPhone, iPad and Android device. If the PWA can't do it reliably, wrap the app with Capacitor and a native audio plugin.
+* **Backend (Q5):** Supabase (database, auth, file storage).
+* **Ownership (Q2):** Craig builds and maintains the site; all accounts (domain, Supabase, email) are in Craig's name.
+* **Budget (Q3):** up to about $25+/month, which covers Supabase Pro.
+* **Scale (Q4):** 40–80 members, 10–15 songs and 6–10 tracks per song per session.
+* **Email domain (Q23):** buy a domain for the site and its email.
+* **Accessibility (Q35):** WCAG 2.2 AA.
+
+### Members and access
+
+* **Login (Q6):** email magic link; primary and secondary addresses both work.
+* **Privacy (Q8):** the choir is in Canada, so CASL applies to email and PIPEDA to personal data. The member directory is opt-in: each member chooses what other members can see.
+* **Current members (Q9):** registration and dues happen elsewhere; the director then marks members active for the session.
+* **Adding members (Q33):** the director pastes a list of emails.
+* **Past members (Q10):** see public pages only until they rejoin.
+* **Public pages (Q11):** landing, FAQ and standing instructions, news, and schedule. Everything else needs a login.
+* **Profile edits (Q12):** a member can change their primary email after confirming the new address, and the director is notified. Section changes are requests that the director approves.
+* **Admins (Q14):** the director, a co-admin as backup, and Craig as developer super-admin. The accompanist has no admin rights.
+
+### Songs and practice player
+
+* **Sections (Q15):** fixed Soprano, Alto, Tenor and Bass/Baritone. A song can split a section into numbered parts.
+* **Parts (Q13):** members choose their part in the player; the app remembers the choice per song.
+* **Song library (Q16):** songs live in a shared library, and each session picks songs from it.
+* **Song files (Q21):** one sheet-music PDF and one lyrics sheet per song, plus practice tracks.
+* **Uploads (Q31, Q32):** the director works mostly on a laptop. Dropping in a song's files tags each track's section and part from its filename, and the director confirms.
+* **Loop order (Q19):** the director sets the song order; members can turn on shuffle.
+* **Warm-ups (Q20):** flagged on the song, always excluded from the loop, and playable individually.
+* **Missing part (Q27):** fall back to the section track, then All voices.
+* **Controls (Q28):** repeat one song, playback speed and seek/skip. An A–B loop isn't in the MVP.
+* **Display (Q29):** show the current song's sheet music or lyrics with a toggle; no page turns synced to the audio.
+* **Downloads and offline (Q7, Q30):** downloads are allowed. A button saves the member's section for offline use, and tracks are also cached once they've been played.
+* **Song notes (Q22):** when notes or errata change, the song shows an "Updated" badge; no email.
+
+### Schedule
+
+* **Agendas (Q17):** each rehearsal has "planned" and "what we covered" fields. Members see "covered" once it's filled in.
+* **Events (Q18, Q34):** concerts include venue, call time and dress code. Weekly rehearsals are created for the whole session in one step. Events can be cancelled with a reason. Members can subscribe to a calendar (ICS) feed.
+
+### News and email
+
+* **Recipients (Q24):** news emails go to all current members, or to new members only (replacing the boilerplate onboarding emails).
+* **Editor (Q25):** rich text with images and attachments.
+* **Push notifications (Q26):** later, not in the MVP.
 
 ## Definitions
 
