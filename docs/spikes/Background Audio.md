@@ -71,6 +71,7 @@ Devices: iPhone and iPad (Safari tab *and* installed), Android phone (Chrome tab
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Single, **blob** source, version `5cab2bf` | 1/2 ok | — | 2→3 `stalled` even though the track was already in memory, and only reached `playing` on unlock (24 s). So the stall isn't the service worker: iOS sometimes won't finish loading a *new* `src` while locked |
 | 2026-10-01 | iPhone, iOS 26.6.1 (Chrome 154) | Chrome tab | Default, version `5cab2bf` | 4/4 ok | Pause/play ok ×2 | Gaps alternate ~125 ms / ~1.1 s, as in the installed app |
 | 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Single, blob source, version `5cab2bf` | 0/1 ok | — | Same as the earlier blob run: 1→2 `stalled` 3.5 s after `play()` and only started on unlock (29 s). Single-element stalls are reproducible with any source |
+| 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Single, blob source, version `5cab2bf` | 4/4 "ok" | — | Counted ok only because it was under the 10 s cut-off: 3→4 `stalled` and took **9.2 s** of silence. Other gaps 0.1–0.3 s |
 | 2026-10-01 |  |  |  |  |  |  |
 
 ## Notes
