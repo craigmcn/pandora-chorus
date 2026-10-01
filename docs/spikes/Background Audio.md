@@ -9,7 +9,7 @@ Can a PWA play a section loop, including starting each next track, while a phone
 
 ## What the test page does
 
-It plays five 22-second AAC tracks ("Song one. Alto." and so on, each with its own tune) as a loop. It logs every playback and page-lifecycle event, saved across reloads, with whether the page was visible or hidden at the time.
+It plays five 22-second MP3 tracks ("Song one. Alto." and so on, each with its own tune) as a loop. It logs every playback and page-lifecycle event, saved across reloads, with whether the page was visible or hidden at the time.
 
 A **transition** is one track ending and the next one reaching `playing`. It is logged as ok, or as FAILED when the next track doesn't start within 10 seconds or `play()` is rejected. The Results section totals the transitions that happened while the screen was hidden or locked.
 
@@ -63,10 +63,11 @@ Devices: iPhone and iPad (Safari tab *and* installed), Android phone (Chrome tab
 
 | Date | Device / OS | Browser or installed | Configuration | Locked transitions | Lock-screen controls | Notes |
 |---|---|---|---|---|---|---|
-| 2026-10-01 | macOS, desktop Chrome (headless) | Browser | All 6 strategy × source combinations | n/a (visible only, 3/3 ok each) | n/a | Smoke test only; desktop can't lock |
+| 2026-10-01 | macOS, desktop Chrome (headless) | Browser | All 6 strategy × source combinations | n/a (visible only, 3/3 ok each) | n/a | Smoke test only, re-run after switching to MP3; desktop can't lock |
+| 2026-10-01 |  |  |  |  |  |  |
 
 ## Notes
 
-* Test tracks are AAC (`.m4a`) because Homebrew `ffmpeg` was broken locally (missing `libx265`) when they were generated. iOS treats MP3 and AAC the same for background playback.
+* Test tracks are MP3 (128 kbps, 44.1 kHz stereo) to match the chorus's real learning tracks, which are mostly MP3.
 * The service worker answers `Range` requests from the cache with sliced `206` responses. iOS Safari won't play cached audio served as a plain `200`, so the real app needs the same handling.
 * Python's `http.server` doesn't support `Range`, so Chrome can't seek with it. Serve locally with something that supports ranges.

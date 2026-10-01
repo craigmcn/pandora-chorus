@@ -1,5 +1,5 @@
 const SHELL_CACHE = "spike-shell-v1";
-const AUDIO_CACHE = "spike-audio-v1";
+const AUDIO_CACHE = "spike-audio-v2";
 const SHELL = ["./", "index.html", "app.js", "style.css", "manifest.webmanifest", "icon-192.png"];
 
 self.addEventListener("install", (event) => {
@@ -8,7 +8,15 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim());
+  // Drop caches from earlier spike versions (e.g. the old AAC tracks) so
+  // "5/5 tracks cached" only ever counts the current files.
+  const keep = [SHELL_CACHE, AUDIO_CACHE];
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) => Promise.all(keys.filter((k) => !keep.includes(k)).map((k) => caches.delete(k))))
+      .then(() => self.clients.claim()),
+  );
 });
 
 self.addEventListener("fetch", (event) => {
@@ -64,7 +72,7 @@ async function withRange(request, response) {
   return new Response(buf.slice(start, end + 1), {
     status: 206,
     headers: {
-      "Content-Type": response.headers.get("Content-Type") || "audio/mp4",
+      "Content-Type": response.headers.get("Content-Type") || "audio/mpeg",
       "Content-Range": `bytes ${start}-${end}/${size}`,
       "Content-Length": String(end - start + 1),
       "Accept-Ranges": "bytes",

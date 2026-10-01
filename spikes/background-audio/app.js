@@ -3,9 +3,9 @@
 const TRACKS = [1, 2, 3, 4, 5].map((n) => ({
   title: `Song ${n}`,
   part: "Alto",
-  path: `audio/song${n}-alto.m4a`,
+  path: `audio/song${n}-alto.mp3`,
 }));
-const AUDIO_CACHE = "spike-audio-v1";
+const AUDIO_CACHE = "spike-audio-v2";
 const LOG_KEY = "spike-log";
 const SETTINGS_KEY = "spike-settings";
 // A transition with no "playing" event after this long counts as failed.
