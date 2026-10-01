@@ -64,6 +64,8 @@ Devices: iPhone and iPad (Safari tab *and* installed), Android phone (Chrome tab
 | Date | Device / OS | Browser or installed | Configuration | Locked transitions | Lock-screen controls | Notes |
 |---|---|---|---|---|---|---|
 | 2026-10-01 | macOS, desktop Chrome (headless) | Browser | All 6 strategy × source combinations | n/a (visible only, 3/3 ok each) | n/a | Smoke test only, re-run after switching to MP3; desktop can't lock |
+| 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default (single, SW cache, Media Session + audioSession on, 1×), version `5cab2bf` | Earlier runs: mostly ok | — | Earlier, informal runs (no report): with the lock-screen player **on screen** during a track change, the next track "played" with no sound and the loop stalled until the app was reopened |
+| 2026-10-01 | iPhone, iOS 26.6.1 (Safari 26.6.1) | Installed | Default, version `5cab2bf` | 3/3 ok | Pause ok | Gaps between songs: 168 ms, 1080 ms, 1093 ms |
 | 2026-10-01 |  |  |  |  |  |  |
 
 ## Notes
