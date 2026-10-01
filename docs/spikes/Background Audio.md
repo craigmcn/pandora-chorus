@@ -24,7 +24,7 @@ A **transition** is one track ending and the next one reaching `playing`. It is 
 
 ## How to run
 
-**URL:** `https://craigmcn.ca/pandora-chorus/`, once GitHub Pages is enabled. It redeploys on every push to `spike/background-audio`.
+**URL:** `https://pandora-chorus.craigmcn.com/` (GitHub Pages with a custom subdomain). It redeploys on every push to `spike/background-audio`.
 
 1. Open the URL in the browser, then reload once so the service worker takes control (the top line should say "SW active").
 2. Tap **Download for offline** and wait for "5/5 tracks cached".
