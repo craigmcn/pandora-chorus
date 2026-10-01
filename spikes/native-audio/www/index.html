@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Native Audio Spike</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Native audio spike</h1>
+      <p id="version" class="muted"></p>
+      <p id="env" class="muted"></p>
+
+      <section aria-labelledby="player-h">
+        <h2 id="player-h">Player</h2>
+        <p id="nowPlaying" aria-live="polite">Stopped</p>
+        <p class="controls">
+          <button type="button" id="prev" aria-label="Previous song">⏮</button>
+          <button type="button" id="playPause">Play</button>
+          <button type="button" id="next" aria-label="Next song">⏭</button>
+        </p>
+        <label>Speed
+          <select id="speed">
+            <option value="1">1×</option>
+            <option value="0.75">0.75×</option>
+          </select>
+        </label>
+      </section>
+
+      <section aria-labelledby="results-h">
+        <h2 id="results-h">Results</h2>
+        <p id="summary"></p>
+        <p>
+          <button type="button" id="refresh">Refresh log</button>
+          <button type="button" id="copy">Copy report</button>
+          <button type="button" id="clear">Clear log</button>
+        </p>
+        <ol id="log" class="log"></ol>
+      </section>
+    </main>
+    <script src="version.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

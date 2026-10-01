@@ -1,0 +1,21 @@
+{
+  "name": "native-audio-spike",
+  "private": true,
+  "description": "Native Capacitor app testing background playback with a native audio queue",
+  "packageManager": "yarn@4.14.1",
+  "scripts": {
+    "prepare-www": "cp -R ../background-audio/audio www/ && echo \"window.BUILD = '$(git rev-parse --short HEAD) · $(date -u '+%Y-%m-%d %H:%M UTC')';\" > www/version.js",
+    "sync": "yarn prepare-www && cap sync",
+    "ios": "yarn sync && cap open ios",
+    "android": "yarn sync && cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/ios": "^8.5.2",
+    "queue-player": "link:./plugins/queue-player"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.2"
+  }
+}
